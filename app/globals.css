@@ -1,0 +1,272 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:wght@400;500;600;700&display=swap');
+
+/* ============================================
+   Mindtrace Design System
+   Tone: calm and private, not "AI product" flashy
+   Palette: warm neutral bg, deep teal accent, charcoal text
+   Typography: serif headings, sans body
+   ============================================ */
+
+:root {
+  --background: #FAF8F5;
+  --foreground: #262626;
+  --card: #FFFFFF;
+  --card-foreground: #262626;
+  --muted: #F0EDE8;
+  --muted-foreground: #6B6B6B;
+  --border: #E5E0D8;
+  --accent: #2D6A6A;
+  --accent-light: #3D8A8A;
+  --accent-muted: rgba(45, 106, 106, 0.1);
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC4A4A;
+  --destructive-muted: rgba(220, 74, 74, 0.1);
+  --success: #10B981;
+  --success-muted: rgba(16, 185, 129, 0.1);
+  --warning: #F59E0B;
+  --warning-muted: rgba(245, 158, 11, 0.1);
+  --indigo: #4C4F8E;
+  --indigo-muted: rgba(76, 79, 142, 0.1);
+  --purple: #8B5CF6;
+  --purple-muted: rgba(139, 92, 246, 0.1);
+  --radius: 0.625rem;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-muted: var(--destructive-muted);
+  --color-success: var(--success);
+  --color-success-muted: var(--success-muted);
+  --color-warning: var(--warning);
+  --color-warning-muted: var(--warning-muted);
+  --color-indigo: var(--indigo);
+  --color-indigo-muted: var(--indigo-muted);
+  --color-purple: var(--purple);
+  --color-purple-muted: var(--purple-muted);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, var(--muted) 25%, var(--card) 50%, var(--muted) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ============================================
+   Component Utilities
+   ============================================ */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: none;
+  outline: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.btn-primary:hover {
+  background: var(--accent-light);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.btn-ghost:hover {
+  background: var(--muted);
+}
+
+.btn-destructive {
+  background: var(--destructive-muted);
+  color: var(--destructive);
+}
+
+.btn-destructive:hover {
+  background: var(--destructive);
+  color: white;
+}
+
+/* ============================================
+   Confidence Badge Colors
+   ============================================ */
+
+.confidence-high {
+  background: var(--success-muted);
+  color: var(--success);
+}
+
+.confidence-medium {
+  background: var(--warning-muted);
+  color: #B97A00;
+}
+
+.confidence-low {
+  background: var(--destructive-muted);
+  color: var(--destructive);
+}
+
+/* ============================================
+   Category Colors
+   ============================================ */
+
+.cat-preference {
+  background: var(--accent-muted);
+  color: var(--accent);
+}
+
+.cat-goal {
+  background: var(--indigo-muted);
+  color: var(--indigo);
+}
+
+.cat-relationship {
+  background: var(--purple-muted);
+  color: var(--purple);
+}
+
+.cat-habit {
+  background: var(--success-muted);
+  color: var(--success);
+}
+
+.cat-contextual {
+  background: var(--warning-muted);
+  color: #B97A00;
+}
